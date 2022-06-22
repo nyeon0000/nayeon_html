@@ -55,20 +55,13 @@ def delete(request,id):
     delete_post.delete()
     return redirect('main:posts')
 
-def create_comment(request, blog_id):
-    new_comment = Comment()
-    new_comment.writer = request.user
-    new_comment.content = request.POST['content']
-    new_comment.blog = get_object_or_404(Post, pk = blog_id)
-    new_comment.save() 
-    return redirect('main:detail', blog_id)
 
 def create_comment(request, id):
-    if request.method == "POST":
-        post = get_object_or_404(Post, pk=id)
-        current_user = request.user
-        comment_content = request.POST.get("content")
-        Comment.objects.create(content=comment_content, writer=current_user, post=post)
+    new_comment= Comment()
+    new_comment.writer=request.user
+    new_comment.content=request.POST['content']
+    new_comment.post =get_object_or_404(Post, pk=id)
+    new_comment.save()
     return redirect("main:detail", id)
 
 def edit_comment(request, id):

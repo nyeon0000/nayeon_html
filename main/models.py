@@ -25,3 +25,4 @@ class Comment(models.Model):
     blog = models.ForeignKey( Post ,on_delete=models.CASCADE, related_name ='comments')
     created_at = models.DateTimeField(auto_now=True)
     update_at = models.DateTimeField(auto_now=True)
+    id=models.AutoField(primary_key=True)

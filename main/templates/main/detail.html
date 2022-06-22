@@ -18,17 +18,21 @@
 {% endif %}
 <p>{{post.body}}</p>
 <div>
-        <form action="{%url 'main:create_comment' post.id%}" method="POST">
-            {%csrf_token%}
-            <textarea name="content" placeholder="댓글내용입력"></textarea>
-            <input type="submit" value="확인">
-        </form>
+    <form action="{%url 'main:create_comment' post.id%}" method="POST">
+        {%csrf_token%}
+        <textarea name="content" placeholder="댓글내용입력"></textarea>
+        <input type="submit" value="확인">
+    </form>
 </div>
 
 <div>
-        {% for comment in comments %}
-          <div>
-            작성자 : {{comment.writer}}
+    {% for comment in comments %}
+        <div>
+            {% if 'user' in comment.writer.username %}
+            <h6>작성자:{{comment.writer.last_name}}{{comment.writer.first_name}}<h6>
+            {% else %}
+            <h6>작성자 : {{comment.writer}}<h6>
+            {% endif %}
              {{comment.content}}<br>
                 {%if user == comment.writer %}
                 <a href="{% url 'main:edit_comment' comment.id %}">댓글 수정하기</a>
@@ -39,9 +43,10 @@
         {% endfor %}
 </div>
         
-    
+{% if user == post.writer %}    
 <a href="{% url 'main:edit' post.id %}">수정하기</a>
 <a href="{% url 'main:delete' post.id %}">삭제하기</a>
+{% endif %}
 
 <br><br>
 <hr>
