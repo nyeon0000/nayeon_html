@@ -8,7 +8,6 @@ class Post(models.Model):
     id=models.AutoField(primary_key=True)
     writer=models.ForeignKey(User,on_delete=models.CASCADE) #일대다관계
     title=models.CharField(max_length=200)
-    writer=models.CharField(max_length=100)
     pub_date=models.DateTimeField()
     body=models.TextField()
     image=models.ImageField(upload_to="post/", blank=True, null=True)
