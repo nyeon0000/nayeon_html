@@ -11,6 +11,8 @@
 }
 
 .container{
+    font-family: 'Pretendard-Thin';
+    text-align: center;
     margin-right: 10%;
     margin-left:10%;
     margin-top: 10%;
@@ -30,5 +32,6 @@ footer{
 
 .hi{
     text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
