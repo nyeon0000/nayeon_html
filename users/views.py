@@ -3,8 +3,8 @@ from main.models import Post
 from .models import User
 from django.contrib.auth.models import User
 
-def mypage(request):
-    user=request.user
+def mypage(request,id):
+    user = get_object_or_404(User, pk=id)
     #로그인한 유저이름과 글 작성자 이름이 동일한 글 필터링
     posts=Post.objects.filter(writer=user)
     context = {
