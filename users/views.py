@@ -13,7 +13,7 @@ def mypage(request,id):
         'followings' :user.profile.followings.all(),
         'followers' :user.profile.followers.all(),
     }
-    return render(request,'users/mypage.html',{'posts':posts})
+    return render(request,'users/mypage.html', context)
 
 def follow(request, id):
     user=request.user
