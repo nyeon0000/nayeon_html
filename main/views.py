@@ -112,7 +112,7 @@ def my_like(request, user_id):
     context = {
         'like_list' : like_list,
     }
-    return render(request, 'main/my_like.html', context)    
+    return render(request, 'main/my_like.html', context)
 
 #dislike
 @require_POST

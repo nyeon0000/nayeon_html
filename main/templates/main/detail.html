@@ -7,7 +7,7 @@
  <h1>{{post.title}}</h1>
 {% if post.writer %}
  {% if 'user' in post.writer.username %}
-     <h3>Writer : {{ post.writer.last_name }} {{ post.writer.first_name }}</h3>
+     <h3>Writer :<a href="{% url 'users:mypage' post.writer.id%}">{{ post.writer.last_name }} {{ post.writer.first_name }}</h3>
     {% else %}
      <h3>Writer : {{ post.writer }}</h3>
      {% endif %}
@@ -38,7 +38,7 @@
         {% for comment in comments %}
           <div>
           {% if 'user' in comment.writer.username %}
-            Comment : {{comment.writer.last_name}}{{comment.writer.first_name}}
+            Comment : <a href="{%url 'users:mypage' comment.writer.id%}"></a>{{comment.writer.last_name}}{{comment.writer.first_name}}
             {% else %}
             Comment: {{comment.writer}}
             {% endif %}  
